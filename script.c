@@ -76,6 +76,10 @@ int main(int argc, char *argv[])
 	char *usr = getenv("USER");
 	int offset = 0;
 
+	if (argc != 2) {
+		write(2, "Please enter a commit message..", 31);
+		return (84);
+	}
 	offset = format_dir(repo);
 
 	char *string = "payload={\"channel\": \"#commit\", \"text\": \"_";
@@ -89,7 +93,7 @@ int main(int argc, char *argv[])
 
 	curl = curl_easy_init();
 		if(curl) {
-		curl_easy_setopt(curl, CURLOPT_URL, "");
+		curl_easy_setopt(curl, CURLOPT_URL, "URL DU WEBHOOK ICI");
 		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, message);
 
 		res = curl_easy_perform(curl);
